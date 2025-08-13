@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="PCode_ZadanieJeden::log" title="ZadanieJeden Log" module="PCode_ZadanieJeden" sortOrder="999" parent="Magento_Catalog::catalog" resource="PCode_ZadanieJeden::log" action="zadaniejeden/log/index"/>
+    </menu>
+</config>

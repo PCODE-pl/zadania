@@ -1,0 +1,28 @@
+<table class="admin__table-secondary">
+    <tbody>
+        <tr>
+            <th data-bind="i18n: 'Date:'"></th>
+            <td data-bind="text: $data.data.changed_at"></td>
+        </tr>
+        <tr>
+            <th data-bind="i18n: 'Product Name:'"></th>
+            <td data-bind="text: $data.data.product_name"></td>
+        </tr>
+        <tr>
+            <th data-bind="i18n: 'Product SKU:'"></th>
+            <td data-bind="text: $data.data.sku"></td>
+        </tr>
+        <tr>
+            <th data-bind="i18n: 'Old Custom SKU:'"></th>
+            <td data-bind="text: $data.data.old_value"></td>
+        </tr>
+        <tr>
+            <th data-bind="i18n: 'New Custom SKU:'"></th>
+            <td data-bind="text: $data.data.new_value"></td>
+        </tr>
+        <tr>
+            <th data-bind="i18n: 'Admin User ID:'"></th>
+            <td data-bind="text: $data.data.admin_user_id"></td>
+        </tr>
+    </tbody>
+</table>

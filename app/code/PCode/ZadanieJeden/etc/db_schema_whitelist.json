@@ -1,0 +1,19 @@
+{
+    "table": {
+        "column": {
+            "entity_id": true,
+            "product_id": true,
+            "old_value": true,
+            "new_value": true,
+            "admin_user_id": true,
+            "changed_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "PCODE_CHANGELOG_PRODUCT_ID_CATALOG_PRODUCT_ENTITY_ENTITY_ID": true
+        },
+        "index": {
+            "PCODE_CHANGELOG_CHANGED_AT": true
+        }
+    }
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <!-- no folding in XMLs -->
+
+    <table name="pcode_changelog" resource="default" engine="innodb" comment="Changelog Table">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="Changelog ID"/>
+        <column xsi:type="int" name="product_id" padding="10" unsigned="true" nullable="false" comment="Product ID"/>
+        <column xsi:type="varchar" name="old_value" length="255" nullable="false" comment="Old Value"/>
+        <column xsi:type="varchar" name="new_value" length="255" nullable="false" comment="New Value"/>
+        <column xsi:type="int" name="admin_user_id" padding="10" unsigned="true" nullable="true" comment="Admin User ID"/>
+        <column xsi:type="timestamp" name="changed_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Changed At"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+
+        <constraint xsi:type="foreign" referenceId="PCODE_CHANGELOG_PRODUCT_ID_CATALOG_PRODUCT_ENTITY_ENTITY_ID" table="pcode_changelog" column="product_id" referenceTable="catalog_product_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+
+        <index referenceId="PCODE_CHANGELOG_CHANGED_AT">
+            <column name="changed_at"/>
+        </index>
+    </table>
+</schema>

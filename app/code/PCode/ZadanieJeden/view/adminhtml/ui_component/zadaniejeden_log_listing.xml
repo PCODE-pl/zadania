@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">zadaniejeden_log_listing.zadaniejeden_log_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>zadaniejeden_log_listing_columns</spinner>
+        <deps>
+            <dep>zadaniejeden_log_listing.zadaniejeden_log_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource component="Magento_Ui/js/grid/provider" name="zadaniejeden_log_listing_data_source">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">entity_id</param>
+            </storageConfig>
+        </settings>
+        <aclResource>PCode_ZadanieJeden::log</aclResource>
+        <dataProvider name="zadaniejeden_log_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="zadaniejeden_log_listing_columns">
+        <column name="entity_id" sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="product_id" sortOrder="20">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Product ID</label>
+            </settings>
+        </column>
+        <column name="old_value" sortOrder="30">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Old Custom SKU</label>
+            </settings>
+        </column>
+        <column name="new_value" sortOrder="40">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">New Custom SKU</label>
+            </settings>
+        </column>
+        <column name="admin_user_id" sortOrder="50">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Admin User ID</label>
+            </settings>
+        </column>
+        <column name="changed_at" sortOrder="60">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Changed At</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="PCode\ZadanieJeden\Ui\Component\Listing\Column\ChangeLogActions">
+            <settings>
+                <indexField>entity_id</indexField>
+                <label translate="true">Action</label>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

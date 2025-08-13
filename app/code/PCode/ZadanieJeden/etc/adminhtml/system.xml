@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="pcode_zadaniejeden" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="9999">
+            <label>ZadanieJeden</label>
+            <tab>catalog</tab>
+            <resource>PCode_ZadanieJeden::config</resource>
+            <group id="general" translate="label" type="text" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10">
+                <label>General</label>
+                <field id="retention_days" translate="label" type="text" showInDefault="1" showInWebsite="0" showInStore="0" sortOrder="10" >
+                    <label>Log Retention (days)</label>
+                    <validate>validate-number validate-greater-than-zero</validate>
+                    <comment>Wpisy starsze niż X dni będą usuwane raz dziennie przez CRON.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">zadaniejeden_log_form.zadaniejeden_log_form_data_source</item>
+        </item>
+        <item name="label" translate="true" xsi:type="string">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="PCode\ZadanieJeden\Ui\Component\Form\Edit\BackButton"/>
+        </buttons>
+        <namespace>zadaniejeden_log_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>zadaniejeden_log_form.zadaniejeden_log_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="zadaniejeden_log_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <dataProvider name="zadaniejeden_log_form_data_source" class="PCode\ZadanieJeden\Ui\DataProvider\ChangeLog\Form">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general" sortOrder="10">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="boolean">false</item>
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="dataScope" xsi:type="string">changelog_entry</item>
+                <item name="sortOrder" xsi:type="number">10</item>
+            </item>
+        </argument>
+        <container name="table">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="componentType" xsi:type="string">container</item>
+                    <item name="template" xsi:type="string">PCode_ZadanieJeden/form/table</item>
+                    <item name="imports" xsi:type="array">
+                        <item name="data" xsi:type="string">${ $.provider }:${ $.dataScope }</item>
+                    </item>
+                </item>
+            </argument>
+        </container>
+    </fieldset>
+</form>
