@@ -19,6 +19,7 @@ fix-dns:
 
 run-warden:
 	warden svc up
+	sleep 10
 
 sign-cert:
 	warden sign-certificate $(PROJECT_NAME).test
@@ -28,6 +29,7 @@ start-env:
 		cp .env.dist .env; \
 	fi
 	warden env up
+	sleep 10
 
 install-magento:
 	warden env exec -T php-fpm composer install; \
