@@ -1,0 +1,63 @@
+version: "3.5"
+services:
+  nginx:
+    volumes:
+      - ./.warden/nginx/custom.conf:/etc/nginx/default.d/custom.conf
+    networks:
+      default:
+        ipv4_address: 172.133.0.11
+
+  php-fpm:
+    volumes:
+      - ./.warden/php/zz-config.ini:/usr/local/etc/php/conf.d/zz-config.ini
+    networks:
+      default:
+        ipv4_address: 172.133.0.9
+
+  php-debug:
+    volumes:
+      - ./.warden/php/zz-config.ini:/usr/local/etc/php/conf.d/zz-config.ini
+    networks:
+      default:
+        ipv4_address: 172.133.0.10
+
+  elasticsearch:
+    environment:
+      - discovery.type=single-node
+      - indices.query.bool.max_clause_count=4096
+      - indices.id_field_data.enabled=true
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+    networks:
+      default:
+        ipv4_address: 172.133.0.5
+
+  db:
+    ports:
+      - "53777:3306"
+    environment:
+      - TZ=Europe/Berlin
+    networks:
+      default:
+        ipv4_address: 172.133.0.7
+
+  redis:
+    networks:
+      default:
+        ipv4_address: 172.133.0.6
+
+  rabbitmq:
+    networks:
+      default:
+        ipv4_address: 172.133.0.8
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.133.0.0/16
+         gateway: 172.133.0.1
+    labels:
+      - "com.docker.compose.network=default"
+      - "dev.warden.environment.name=zadania"
+      - "dev.warden.environment.type=magento2"
