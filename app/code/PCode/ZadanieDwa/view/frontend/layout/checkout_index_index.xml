@@ -18,7 +18,7 @@
                                                             <item name="displayArea" xsi:type="string">shippingAdditional</item>
                                                             <item name="children" xsi:type="array">
                                                                 <item name="shipping-info-wrapper" xsi:type="array">
-                                                                    <item name="component" xsi:type="string">PCode_ZadanieDwa/js/view/shipping-info</item>
+                                                                    <item name="component" xsi:type="string">PCode_ZadanieDwa/js/view/note</item>
                                                                     <item name="provider" xsi:type="string">checkoutProvider</item>
                                                                     <item name="sortOrder" xsi:type="string">0</item>
                                                                 </item>

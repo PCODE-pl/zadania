@@ -5,7 +5,7 @@ define([
 
     return Component.extend({
         defaults: {
-            template: 'PCode_ZadanieDwa/shipping-info'
+            template: 'PCode_ZadanieDwa/note'
         },
     });
 });
