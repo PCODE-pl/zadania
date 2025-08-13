@@ -1,4 +1,5 @@
 PROJECT_NAME:=zadania
+TMP_SUFFIX="09794309"
 
 .DEFAULT_GOAL := build
 
@@ -41,7 +42,24 @@ install-modules:
 reindex:
 	warden env exec -T php-fpm bin/magento indexer:reindex
 
+clean:
+	warden env down -v || true
+	if [ -f "./.env" ]; then \
+		cp ./.env /tmp/.env-${TMP_SUFFIX}; \
+	fi
+	if [ -f "./auth.json" ]; then \
+		cp ./auth.json /tmp/auth.json-${TMP_SUFFIX}; \
+	fi
+	git clean -dfX
+	if [ -f "/tmp/.env-${TMP_SUFFIX}" ]; then \
+		mv /tmp/.env-${TMP_SUFFIX} ./.env; \
+	fi
+	if [ -f "/tmp/auth.json-${TMP_SUFFIX}" ]; then \
+		mv /tmp/auth.json-${TMP_SUFFIX} ./auth.json; \
+	fi
+
 build:
+	make clean
 	make fix-dns
 	make run-warden
 	make sign-cert

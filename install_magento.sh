@@ -3,20 +3,17 @@
 MAGENTO_VERSION="2.4.6-p11"
 source .env
 
-# clean up previous installation
-rm -rf ./app/code/Magento
-rm ./app/etc/{config,env}.php
-
 # Install Sample Data
 wget -O /tmp/sample-data.tar.gz https://github.com/magento/magento2-sample-data/archive/refs/tags/${MAGENTO_VERSION}.tar.gz
-sudo mv /tmp/sample-data.tar.gz /var/www/html
-sudo mkdir -p ./sample-data
-sudo tar -xf ./sample-data.tar.gz --strip-components 1 -C ./sample-data
-sudo rm ./sample-data.tar.gz
+mv /tmp/sample-data.tar.gz /var/www/html
+mkdir -p ./sample-data
+tar -xf ./sample-data.tar.gz --strip-components 1 -C ./sample-data
+rm ./sample-data.tar.gz
 mkdir -p ./app/code
 cp -r ./sample-data/app/code/Magento ./app/code/
 mkdir -p ./pub/media
 cp -r ./sample-data/pub/media ./pub/
+rm -rf ./sample-data
 
 # Install Magento
 bin/magento setup:install \
@@ -55,8 +52,7 @@ bin/magento setup:install \
     --page-cache-redis-db=1 \
     --page-cache-redis-port=6379
 
-
-# Configure Application
+# Configure Magento
 bin/magento deploy:mode:set -s developer
 bin/magento config:set --lock-env web/unsecure/base_url "https://${TRAEFIK_DOMAIN}/"
 bin/magento config:set --lock-env web/secure/base_url "https://${TRAEFIK_DOMAIN}/"
@@ -70,6 +66,7 @@ bin/magento config:set --lock-env catalog/search/enable_eav_indexer 1
 bin/magento config:set --lock-env dev/static/sign 0
 bin/magento cache:disable block_html full_page
 
+# Final steps
 bin/magento setup:upgrade
 bin/magento indexer:reindex
 bin/magento cache:flush
