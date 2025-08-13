@@ -33,11 +33,11 @@ class AddNotePlugin
     ): void {
         $address = $addressInformation->getShippingAddress();
         $extensionAttributes = $address->getExtensionAttributes();
-        if ($extensionAttributes?->getNote()) {
+        if ($extensionAttributes?->getCustomOrderNote()) {
             $quote = $this->quoteRepository->getActive($cartId);
             $quoteId = (int)$quote->getId();
             if ($quoteId) {
-                $noteText = $this->prepareNote($extensionAttributes->getNote());
+                $noteText = $this->prepareNote($extensionAttributes->getCustomOrderNote());
                 $note = $this->getNote($quoteId);
                 $note->setQuoteId($quoteId);
                 $note->setNote($noteText);

@@ -42,7 +42,7 @@ class AddNoteInOrderPlugin
 
         $note = $this->getNote($order);
         if ($note->getOrderId()) {
-            $extensionAttributes->setNote($note);
+            $extensionAttributes->setCustomOrderNote($note);
         }
 
         $order->setExtensionAttributes($extensionAttributes);

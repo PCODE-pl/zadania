@@ -13,7 +13,7 @@ use Magento\Sales\Block\Adminhtml\Order\View;
 $note = '';
 $extensionAttributes = $block->getOrder()->getExtensionAttributes();
 if ($extensionAttributes && $extensionAttributes->getNote()) {
-    $note = $extensionAttributes->getNote()->getNote();
+    $note = $extensionAttributes->getCustomOrderNote()->getNote();
 }
 ?>
 <?php if ($note): ?>

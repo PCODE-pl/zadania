@@ -9,11 +9,11 @@ define([
         return wrapper.wrap(setShippingInformationAction, function (originalAction, messageContainer) {
             var shippingAddress = quote.shippingAddress();
 
-            const note = $('#pcode_note').val();
+            const note = $('#custom_order_note').val();
             if (shippingAddress['extension_attributes'] === undefined) {
                 shippingAddress['extension_attributes'] = {};
             }
-            shippingAddress['extension_attributes']['note'] = note;
+            shippingAddress['extension_attributes']['custom_order_note'] = note;
 
             return originalAction();
         });
