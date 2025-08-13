@@ -1,0 +1,16 @@
+{
+    "pcode_note": {
+        "column": {
+            "entity_id": true,
+            "quote_id": true,
+            "order_id": true,
+            "note": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "PCODE_NOTE_QUOTE_ID": true,
+            "PCODE_NOTE_QUOTE_ID_QUOTE_ENTITY_ID": true,
+            "PCODE_NOTE_ORDER_ID_SALES_ORDER_ENTITY_ID": true
+        }
+    }
+}

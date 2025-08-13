@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <!-- no folding in XMLs -->
+
+    <table name="pcode_note" resource="default" engine="innodb" comment="Note Table">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+        <column xsi:type="int" name="quote_id" unsigned="true" nullable="false" identity="false" comment="Quote ID"/>
+        <column xsi:type="int" name="order_id" unsigned="true" nullable="true" identity="false" comment="Order ID"/>
+        <column xsi:type="varchar" name="note" length="512" nullable="false" comment="Note"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="PCODE_NOTE_QUOTE_ID">
+            <column name="quote_id"/>
+        </constraint>
+
+        <constraint xsi:type="foreign" referenceId="PCODE_NOTE_ORDER_ID_SALES_ORDER_ENTITY_ID" table="pcode_note" column="order_id" referenceTable="sales_order" referenceColumn="entity_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="PCODE_NOTE_QUOTE_ID_QUOTE_ENTITY_ID" table="pcode_note" column="quote_id" referenceTable="quote" referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+</schema>

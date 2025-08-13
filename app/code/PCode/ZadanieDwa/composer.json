@@ -1,0 +1,26 @@
+{
+    "name": "pcode/module-zadaniedwa",
+    "description": "Komentarze do zamówienia",
+    "type": "magento2-module",
+    "license": [
+        "proprietary"
+    ],
+    "authors": [
+        {
+            "email": "pczerkas@gmail.com",
+            "name": "Przemysław Czerkas"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "magento/framework": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "PCode\\ZadanieDwa\\": ""
+        }
+    }
+}

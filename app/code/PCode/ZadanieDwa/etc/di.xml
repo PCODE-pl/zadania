@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="PCode\ZadanieDwa\Api\Data\NoteInterface" type="PCode\ZadanieDwa\Model\Note"/>
+    <preference for="PCode\ZadanieDwa\Api\NoteRepositoryInterface" type="PCode\ZadanieDwa\Model\NoteRepository"/>
+    <type name="Magento\Sales\Api\OrderRepositoryInterface">
+        <plugin name="pcodeZadanieDwaAddNoteInOrder" type="PCode\ZadanieDwa\Plugin\AddNoteInOrderPlugin"/>
+    </type>
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="pcodeZadanieDwaAddNote" type="PCode\ZadanieDwa\Plugin\AddNotePlugin"/>
+    </type>
+</config>
