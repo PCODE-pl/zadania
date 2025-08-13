@@ -5,8 +5,8 @@
     <table name="pcode_changelog" resource="default" engine="innodb" comment="Changelog Table">
         <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true" comment="Changelog ID"/>
         <column xsi:type="int" name="product_id" padding="10" unsigned="true" nullable="false" comment="Product ID"/>
-        <column xsi:type="varchar" name="old_value" length="255" nullable="false" comment="Old Value"/>
-        <column xsi:type="varchar" name="new_value" length="255" nullable="false" comment="New Value"/>
+        <column xsi:type="varchar" name="old_value" length="64" nullable="false" comment="Old Value"/>
+        <column xsi:type="varchar" name="new_value" length="64" nullable="false" comment="New Value"/>
         <column xsi:type="int" name="admin_user_id" padding="10" unsigned="true" nullable="true" comment="Admin User ID"/>
         <column xsi:type="timestamp" name="changed_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Changed At"/>
 
