@@ -14,7 +14,6 @@
 !/.warden/**
 !/auth.json.sample
 !/composer.json
-!/composer.lock
 !/install_magento.sh
 !/install_modules.sh
 !/Makefile
