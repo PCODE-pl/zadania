@@ -5,31 +5,37 @@ services:
       - ./.warden/nginx/custom.conf:/etc/nginx/default.d/custom.conf
     networks:
       default:
-        ipv4_address: 172.133.0.11
+        ipv4_address: 172.133.0.21
 
   php-fpm:
     volumes:
-      - ./.warden/php/zz-config.ini:/usr/local/etc/php/conf.d/zz-config.ini
+      - ./.warden/php/zz-config.ini:/etc/php.d/zz-config.ini
+      - ./.warden/php/zz-config.ini:/etc/php-fpm.d/zz-config.ini
     networks:
       default:
-        ipv4_address: 172.133.0.9
+        ipv4_address: 172.133.0.19
 
   php-debug:
     volumes:
-      - ./.warden/php/zz-config.ini:/usr/local/etc/php/conf.d/zz-config.ini
+      - ./.warden/php/zz-config.ini:/etc/php.d/zz-config.ini
+      - ./.warden/php/zz-config.ini:/etc/php-fpm.d/zz-config.ini
+
     networks:
       default:
-        ipv4_address: 172.133.0.10
+        ipv4_address: 172.133.0.20
 
-  elasticsearch:
+  opensearch:
     environment:
       - discovery.type=single-node
-      - indices.query.bool.max_clause_count=4096
+      - indices.query.bool.max_clause_count=1024
       - indices.id_field_data.enabled=true
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "cluster.routing.allocation.disk.watermark.low=98%"
+      - "cluster.routing.allocation.disk.watermark.high=99%"
+      - "cluster.routing.allocation.disk.watermark.flood_stage=99%"
+      - "OPENSEARCH_JAVA_OPTS=-Xms1024m -Xmx1024m"
     networks:
       default:
-        ipv4_address: 172.133.0.5
+        ipv4_address: 172.133.0.15
 
   db:
     ports:
@@ -38,17 +44,17 @@ services:
       - TZ=Europe/Berlin
     networks:
       default:
-        ipv4_address: 172.133.0.7
+        ipv4_address: 172.133.0.17
 
   redis:
     networks:
       default:
-        ipv4_address: 172.133.0.6
+        ipv4_address: 172.133.0.16
 
   rabbitmq:
     networks:
       default:
-        ipv4_address: 172.133.0.8
+        ipv4_address: 172.133.0.18
 
 networks:
   default:

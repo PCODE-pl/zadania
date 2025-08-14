@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MAGENTO_VERSION="2.4.6-p11"
+MAGENTO_VERSION="2.4.8-p2"
 source .env
 
 # Install Sample Data
@@ -31,12 +31,12 @@ bin/magento setup:install \
     --db-name=magento \
     --db-user=magento \
     --db-password=magento \
-    --search-engine=elasticsearch7 \
-    --elasticsearch-host=elasticsearch \
-    --elasticsearch-port=9200 \
-    --elasticsearch-index-prefix=magento2 \
-    --elasticsearch-enable-auth=0 \
-    --elasticsearch-timeout=15 \
+    --search-engine=opensearch \
+    --opensearch-host=opensearch \
+    --opensearch-port=9200 \
+    --opensearch-index-prefix=magento2 \
+    --opensearch-enable-auth=0 \
+    --opensearch-timeout=15 \
     --http-cache-hosts=varnish:80 \
     --session-save=redis \
     --session-save-redis-host=redis \
