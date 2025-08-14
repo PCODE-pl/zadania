@@ -12,7 +12,7 @@ use Magento\Sales\Block\Adminhtml\Order\View;
 
 $note = '';
 $extensionAttributes = $block->getOrder()->getExtensionAttributes();
-if ($extensionAttributes && $extensionAttributes->getNote()) {
+if ($extensionAttributes && $extensionAttributes->getCustomOrderNote()) {
     $note = $extensionAttributes->getCustomOrderNote()->getNote();
 }
 ?>
@@ -24,8 +24,8 @@ if ($extensionAttributes && $extensionAttributes->getNote()) {
         <div class="admin__page-section-content">
             <div class="admin__page-section-item">
                 <div class="admin__page-section-item-content">
-                    <div class="order-payment-method-title" id="XXXorder-comments-label-div">
-                        <span><?= $escaper->escapeHtml(nl2br($note)); ?></span>
+                    <div class="order-payment-method-title">
+                        <span><?= nl2br($escaper->escapeHtml($note)); ?></span>
                     </div>
                 </div>
             </div>

@@ -55,8 +55,14 @@ class AddNotePlugin
         }
     }
 
-    private function prepareNote(string $note): string
+    private function prepareNote(string $text): string
     {
-        return $this->filterManager->stripTags(trim($note));
+        $result = $this->filterManager->stripTags(trim($text));
+        $result = $this->filterManager->truncate(
+            $result,
+            ['length' => 500],
+        );
+
+        return $result;
     }
 }
