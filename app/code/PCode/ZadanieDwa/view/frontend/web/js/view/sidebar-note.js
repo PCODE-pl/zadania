@@ -12,11 +12,20 @@ define([
             template: 'PCode_ZadanieDwa/sidebar-note'
         },
 
+        nl2br: function (str, is_xhtml) {
+            if (typeof str === 'undefined' || str === null) {
+                return '';
+            }
+            var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
+
+            return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+        },
+
         /**
          * @return {String}
          */
         getNote: function () {
-            return $('#custom_order_note').val();
+            return this.nl2br($('#custom_order_note').val(), true);
         },
 
         /**
